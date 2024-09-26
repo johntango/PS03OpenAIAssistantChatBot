@@ -19,6 +19,7 @@ app.use(express.static('public')); // Serve static files from the 'public' direc
 // State dictionary
 let state = {
   assistant_id: null,
+  assistant_name: null,
   threadId: null,
   messages: [],
 };
@@ -35,6 +36,7 @@ app.post('/api/assistants', async (req, res) => {
         console.log(myAssistant);
               // Extract the list of assistants from 'data.data'
         state.assistant_id = myAssistant.id; // Updated line
+        state.assistant_name = myAssistant.name; // Updated line
         res.status(200).json(state);
       }
       catch{
